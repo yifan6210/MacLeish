@@ -23,5 +23,7 @@ Sap from maple trees is collected and boiled down to produce maple syrup. Collec
 
 ```{r}
 sap <- maple_sap
+ggplot(sap, aes(x=when, y = sap)) +
+  geom_point()
 ```
 
