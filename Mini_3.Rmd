@@ -36,6 +36,7 @@ mac <- etl("macleish") %>%
 whately <- mac %>%
   tbl("whately") %>%
     collect(n = Inf) %>%
-  filter(when > "2013-01-01")
+  filter(when > "2013-01-01") %>%
+  select(when, temperature, rainfall)
 ```
 
