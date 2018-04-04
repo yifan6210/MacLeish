@@ -25,3 +25,15 @@ Sap from maple trees is collected and boiled down to produce maple syrup. Collec
 sap <- maple_sap
 ```
 
+```{r}
+mac <- etl("macleish") %>%
+  etl_update()
+```
+
+```{r}
+whately <- mac %>%
+  tbl("whately") %>%
+    collect(n = Inf) %>%
+  filter(when > "2013-01-01")
+```
+
