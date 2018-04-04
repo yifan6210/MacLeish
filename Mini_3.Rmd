@@ -29,14 +29,16 @@ ggplot(sap, aes(x=when, y = sap)) +
 
 ```{r}
 mac <- etl("macleish") %>%
-  etl_update()
+   etl_update()
 ```
 
 ```{r}
 whately <- mac %>%
   tbl("whately") %>%
-    collect(n = Inf) %>%
-  filter(when > "2013-01-01") %>%
+    collect(n = Inf)
+
+weather <- collect(whately) %>% 
+   filter(when > "2013-01-01") %>%
   select(when, temperature, rainfall)
 ```
 
