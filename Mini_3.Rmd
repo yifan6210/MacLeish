@@ -18,7 +18,10 @@ library(leaflet)
 library(dplyr)
 library(etl)
 library(macleish)
+<<<<<<< HEAD
 library(lubridate)
+=======
+>>>>>>> c85dda0552fdac8e6a7dd6ed7316bcb01e0c1acd
 library(sf)
 ```
 
@@ -43,9 +46,11 @@ DEM
 Biking from Smith College to MacLeish is of interest to a subset of field station visitors. Considering that some bikers appreciate climbing hills and others wish to avoid hills, propose two alternative bike routes to the field station using the available data from MassGIS. Detail the lengths of the routes and the elevation change along the routes, and support your choices with data.
 
 Supporting data includes:
-Road shapefiles
+
 30’ contour elevation data
 School locations shapefile
+
+
 MacLeish Field Station Property Boundary shapefile
 
 ```{r}
@@ -59,4 +64,37 @@ b <- leaflet() %>%
   addPolygons(data = macleish_layers[["boundary"]], weight = 1, fillOpacity = 0.01, group = "Boundaries")
 ```
 
+bike trails shapefiles
 
+```{r}
+url <- "http://wsgw.mass.gov/data/gispub/shape/state/biketrails_arc.zip"
+local_file <- basename(url)
+download.file(url, destfile = local_file)
+unzip(local_file, exdir = "biketrails")
+
+dsn <- path.expand("biketrails")
+bike_trails <- read_sf(dsn)
+bike_trails
+```
+
+```{r}
+bike_trails_4326 <- bike_trails %>%
+  st_transform(4326)
+bike_trails_4326
+```
+
+```{r}
+leaflet() %>%
+  addTiles(group = "OpenStreetMap") %>%
+  #addProviderTiles("Esri.WorldTopoMap", group = "Topography") %>%
+  #addProviderTiles("Esri.WorldImagery", group = "Satellite") %>%
+  #addProviderTiles("Stamen.TonerLite", group = "Toner Lite") %>%
+  addPolygons(data = macleish_layers[["boundary"]], weight = 1, fillOpacity = 0.01, group = "Boundaries") %>%
+  addPolylines(data = bike_trails_4326)
+```
+
+<<<<<<< HEAD
+=======
+Road shapefiles
+
+>>>>>>> c85dda0552fdac8e6a7dd6ed7316bcb01e0c1acd
