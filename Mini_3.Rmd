@@ -17,6 +17,32 @@ library(tidyverse)
 library(dplyr)
 library(etl)
 library(macleish)
+library(lubridate)
+library(sf)
 ```
 
+```{r}
+url <- "http://download.massgis.digital.mass.gov/elevation/elevation_hillshade_5k.zip"
+local_file <- basename(url)
+download.file(url, destfile = local_file)
+unzip(local_file, exdir = "dem")
+dsn <- path.expand("dem")
+DEM <- read_sf(dsn)
+DEM
+```
+
+
+
+<<<<<<< HEAD
+=======
+Biking from Smith College to MacLeish is of interest to a subset of field station visitors. Considering that some bikers appreciate climbing hills and others wish to avoid hills, propose two alternative bike routes to the field station using the available data from MassGIS. Detail the lengths of the routes and the elevation change along the routes, and support your choices with data.
+
+Supporting data includes:
+Road shapefiles
+30’ contour elevation data
+School locations shapefile
+MacLeish Field Station Property Boundary shapefile
+Sap from maple trees is collected and boiled down to produ
+
+>>>>>>> 81ca1c4299a0ea595c225ca6a9ea9bbe1545630f
 
