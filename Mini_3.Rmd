@@ -25,8 +25,9 @@ Biking from Smith College to MacLeish is of interest to a subset of field statio
 
 Supporting data includes:
 
-30’ contour elevation data
+
 School locations shapefile
+Road shapefiles
 
 
 MacLeish Field Station Property Boundary shapefile
@@ -71,5 +72,5 @@ leaflet() %>%
   addPolylines(data = bike_trails_4326)
 ```
 
-Road shapefiles
+30’ contour elevation data
 
