@@ -14,6 +14,7 @@ knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo=TRUE)
 
 ```{r}
 library(tidyverse)
+library(leaflet)
 library(dplyr)
 library(etl)
 library(macleish)
@@ -21,11 +22,15 @@ library(lubridate)
 library(sf)
 ```
 
+
 ```{r}
 url <- "http://download.massgis.digital.mass.gov/elevation/elevation_hillshade_5k.zip"
 local_file <- basename(url)
 download.file(url, destfile = local_file)
 unzip(local_file, exdir = "dem")
+```
+
+```{r}
 dsn <- path.expand("dem")
 DEM <- read_sf(dsn)
 DEM
@@ -42,7 +47,16 @@ Road shapefiles
 30’ contour elevation data
 School locations shapefile
 MacLeish Field Station Property Boundary shapefile
-Sap from maple trees is collected and boiled down to produ
 
->>>>>>> 81ca1c4299a0ea595c225ca6a9ea9bbe1545630f
+```{r}
+M_boundary <- macleish_layers[["boundary"]]
+
+b <- leaflet() %>%
+  addTiles(group = "OpenStreetMap") %>%
+  addProviderTiles("Esri.WorldTopoMap", group = "Topography") %>%
+  addProviderTiles("Esri.WorldImagery", group = "Satellite") %>%
+  addProviderTiles("Stamen.TonerLite", group = "Toner Lite") %>%
+  addPolygons(data = macleish_layers[["boundary"]], weight = 1, fillOpacity = 0.01, group = "Boundaries")
+```
+
 
