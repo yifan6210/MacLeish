@@ -14,10 +14,10 @@ knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo=TRUE)
 
 ```{r}
 library(tidyverse)
+library(leaflet)
 library(dplyr)
 library(etl)
 library(macleish)
-library(lubridate)
 ```
 
 Biking from Smith College to MacLeish is of interest to a subset of field station visitors. Considering that some bikers appreciate climbing hills and others wish to avoid hills, propose two alternative bike routes to the field station using the available data from MassGIS. Detail the lengths of the routes and the elevation change along the routes, and support your choices with data.
@@ -27,6 +27,17 @@ Road shapefiles
 30’ contour elevation data
 School locations shapefile
 MacLeish Field Station Property Boundary shapefile
-Sap from maple trees is collected and boiled down to produ
+
+```{r}
+M_boundary <- macleish_layers[["boundary"]]
+
+b <- leaflet() %>%
+  addTiles(group = "OpenStreetMap") %>%
+  addProviderTiles("Esri.WorldTopoMap", group = "Topography") %>%
+  addProviderTiles("Esri.WorldImagery", group = "Satellite") %>%
+  addProviderTiles("Stamen.TonerLite", group = "Toner Lite") %>%
+  addPolygons(data = macleish_layers[["boundary"]], weight = 1, fillOpacity = 0.01, group = "Boundaries")
+```
+
 
 
