@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 ---
 title: "Mini-Project 3"
 author: "Yifan Ma & Meghan Suslovic"
@@ -29,6 +27,9 @@ Supporting data includes:
 
 
 School locations shapefile
+
+
+
 Road shapefiles
 
 
@@ -67,28 +68,24 @@ bike_trails_4326
 ```{r}
 leaflet() %>%
   addTiles(group = "OpenStreetMap") %>%
-  #addProviderTiles("Esri.WorldTopoMap", group = "Topography") %>%
-  #addProviderTiles("Esri.WorldImagery", group = "Satellite") %>%
-  #addProviderTiles("Stamen.TonerLite", group = "Toner Lite") %>%
+  addProviderTiles("Esri.WorldTopoMap", group = "Topography") %>%
+  addProviderTiles("Esri.WorldImagery", group = "Satellite") %>%
+  addProviderTiles("Stamen.TonerLite", group = "Toner Lite") %>%
   addPolygons(data = macleish_layers[["boundary"]], weight = 1, fillOpacity = 0.01, group = "Boundaries") %>%
   addPolylines(data = bike_trails_4326)
 ```
 
-
-Road data
-
-```{r}
-url <- "http://download.massgis.digital.mass.gov/shapefiles/state/MassDOT_Roads_SHP.zip"
-local_file <- basename(url)
-download.file(url, destfile = local_file)
-unzip(local_file, exdir = "DOTroads")
-
-dsn <- path.expand("DOTroads")
-DOTroads <- read_sf(dsn)
-DOTroads
-```
-
-
 30’ contour elevation data
 
->>>>>>> 9f1921dc4c9f4168213ffa215f6e674a3f2badcb
+```{r}
+url <- "http://download.massgis.digital.mass.gov/elevation/elevation_hillshade_5k.zip"
+local_file <- basename(url)
+download.file(url, destfile = local_file)
+unzip(local_file, exdir = "dem")
+```
+
+```{r}
+dsn <- path.expand("dem")
+DEM <- read_sf(dsn)
+DEM
+```
