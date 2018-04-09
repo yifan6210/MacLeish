@@ -82,3 +82,15 @@ elevation <- read_sf(dsn)
 elevation
 ```
 
+Road data
+
+```{r}
+url <- "http://download.massgis.digital.mass.gov/shapefiles/state/MassDOT_Roads_SHP.zip"
+local_file <- basename(url)
+download.file(url, destfile = local_file)
+unzip(local_file, exdir = "DOTroads")
+
+dsn <- path.expand("DOTroads")
+DOTroads <- read_sf(dsn)
+DOTroads
+```
