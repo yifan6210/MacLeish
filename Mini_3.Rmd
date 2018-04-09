@@ -59,15 +59,6 @@ bike_trails_4326 <- bike_trails %>%
 bike_trails_4326
 ```
 
-```{r}
-leaflet() %>%
-  addTiles(group = "OpenStreetMap") %>%
-  addProviderTiles("Esri.WorldTopoMap", group = "Topography") %>%
-  addProviderTiles("Esri.WorldImagery", group = "Satellite") %>%
-  addProviderTiles("Stamen.TonerLite", group = "Toner Lite") %>%
-  addPolygons(data = macleish_layers[["boundary"]], weight = 1, fillOpacity = 0.01, group = "Boundaries") %>%
-  addPolylines(data = bike_trails_4326)
-```
 
 30’ contour elevation data
 
@@ -92,5 +83,20 @@ unzip(local_file, exdir = "DOTroads")
 
 dsn <- path.expand("DOTroads")
 DOTroads <- read_sf(dsn)
-DOTroads
+DOTroads_4326 <- DOTroads %>%
+  st_transform(4326) %>%
+  
 ```
+
+```{r}
+leaflet() %>%
+  addTiles(group = "OpenStreetMap") %>%
+  addProviderTiles("Esri.WorldTopoMap", group = "Topography") %>%
+  addProviderTiles("Esri.WorldImagery", group = "Satellite") %>%
+  addProviderTiles("Stamen.TonerLite", group = "Toner Lite") %>%
+  addPolygons(data = macleish_layers[["boundary"]], weight = 2, fillOpacity = 0.01, group = "Boundaries") %>%
+  addPolylines(data = bike_trails_4326, color = "red") %>%
+  addPolylines(data = DOTroads_4326)
+```
+
+
