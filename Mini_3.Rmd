@@ -3,7 +3,7 @@
 ---
 title: "Mini-Project 3"
 author: "Yifan Ma & Meghan Suslovic"
-date: "March 7, 2018"
+date: "April 9, 2018"
 output: 
   html_document:
     code_folding: hide
@@ -26,12 +26,8 @@ library(sf)
 Biking from Smith College to MacLeish is of interest to a subset of field station visitors. Considering that some bikers appreciate climbing hills and others wish to avoid hills, propose two alternative bike routes to the field station using the available data from MassGIS. Detail the lengths of the routes and the elevation change along the routes, and support your choices with data.
 
 Supporting data includes:
-
-
 School locations shapefile
 Road shapefiles
-
-
 MacLeish Field Station Property Boundary shapefile
 
 ```{r}
