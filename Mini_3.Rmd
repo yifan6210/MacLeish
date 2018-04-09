@@ -91,4 +91,17 @@ DOTroads
 
 30’ contour elevation data
 
+```{r}
+url <- "http://download.massgis.digital.mass.gov/shapefiles/state/contours250k.zip"
+local_file <- basename(url)
+download.file(url, destfile = local_file)
+unzip(local_file, exdir = "elevation")
+
+dsn <- path.expand("elevation")
+elevation <- read_sf(dsn)
+elevation
+```
+
+
+
 >>>>>>> 9f1921dc4c9f4168213ffa215f6e674a3f2badcb
