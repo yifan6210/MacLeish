@@ -88,6 +88,19 @@ DOTroads_4326 <- DOTroads %>%
   
 ```
 
+```{r}
+url <- "http://download.massgis.digital.mass.gov/shapefiles/census2010/CENSUS2010TIGERROADS_SHP.zip"
+local_file <- basename(url)
+download.file(url, destfile = local_file)
+unzip(local_file, exdir = "TIGERroads")
+
+dsn <- path.expand("TIGERroads")
+TIGERroads <- read_sf(dsn)
+TIGERroads_4326 <- TIGERroads %>%
+  st_transform(4326) %>%
+  
+```
+
 <<<<<<< HEAD
 =======
 ```{r}
