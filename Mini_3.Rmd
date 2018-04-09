@@ -79,7 +79,7 @@ unzip(local_file, exdir = "elevation")
 
 dsn <- path.expand("elevation")
 elevation <- read_sf(dsn)
-elevation
+
 ```
 
 Road data
