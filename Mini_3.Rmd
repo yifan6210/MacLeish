@@ -101,7 +101,7 @@ TIGERroads_4326 <- TIGERroads %>%
   
 ```
 
-<<<<<<< HEAD
+<<<<<<< HEAD 
 =======
 ```{r}
 leaflet() %>%
