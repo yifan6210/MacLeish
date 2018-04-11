@@ -122,7 +122,12 @@ R <- TIGERroads_4326 %>%
   filter(RTOWN == "CONWAY" | RTOWN == "WHATELY" | RTOWN == "WILLIAMSBURG" | RTOWN == "HATFIELD" | RTOWN == "DEERFIELD" | RTOWN == "NORTHAMPTON")
 ```
 
+<<<<<<< HEAD
+<<<<<<< HEAD 
+=======
+=======
 
+>>>>>>> 6676b007709ba2b9d1919564f82bc8a4469c7a2d
 ```{r}
 leaflet() %>%
   addTiles(group = "OpenStreetMap") %>%
