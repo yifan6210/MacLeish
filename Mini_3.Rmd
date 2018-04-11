@@ -75,44 +75,44 @@ elevation <- read_sf(dsn)
 
 Road data
 
+
 ```{r, eval= FALSE}
-url <- "http://download.massgis.digital.mass.gov/shapefiles/state/MassDOT_Roads_SHP.zip"
-local_file <- basename(url)
-download.file(url, destfile = local_file)
-unzip(local_file, exdir = "DOTroads")
-
-dsn <- path.expand("DOTroads")
-DOTroads <- read_sf(dsn)
-DOTroads_4326 <- DOTroads %>%
-  st_transform(4326) %>%
-  
-```
-
-```{r}
 url <- "http://download.massgis.digital.mass.gov/shapefiles/census2010/CENSUS2010TIGERROADS_SHP.zip"
 local_file <- basename(url)
 download.file(url, destfile = local_file)
 unzip(local_file, exdir = "TIGERroads")
 
-dsn <- path.expand("TIGERroads")
-TIGERroads <- read_sf(dsn)
-TIGERroads_4326 <- TIGERroads %>%
-  st_transform(4326) %>%
-  
 ```
 
+
+```{r}
+dsn <- path.expand("TIGERroads")
+TIGERroads <- read_sf(dsn)
+
+TIGERroads_4326 <- TIGERroads %>%
+  st_transform(4326)
+
+```
+
+```{r}
+R <- TIGERroads_4326 %>%
+  filter(RTOWN == "CONWAY" | RTOWN == "WHATELY" | RTOWN == "WILLIAMSBURG" | RTOWN == "HATFIELD" | RTOWN == "DEERFIELD" | RTOWN == "NORTHAMPTON")
+```
+
+<<<<<<< HEAD
 <<<<<<< HEAD 
 =======
+=======
+
+>>>>>>> 6676b007709ba2b9d1919564f82bc8a4469c7a2d
 ```{r}
 leaflet() %>%
   addTiles(group = "OpenStreetMap") %>%
-  addProviderTiles("Esri.WorldTopoMap", group = "Topography") %>%
-  addProviderTiles("Esri.WorldImagery", group = "Satellite") %>%
-  addProviderTiles("Stamen.TonerLite", group = "Toner Lite") %>%
+  #addProviderTiles("Esri.WorldTopoMap", group = "Topography") %>%
+  #addProviderTiles("Esri.WorldImagery", group = "Satellite") %>%
+  #addProviderTiles("Stamen.TonerLite", group = "Toner Lite") %>%
   addPolygons(data = macleish_layers[["boundary"]], weight = 2, fillOpacity = 0.01, group = "Boundaries") %>%
-  addPolylines(data = bike_trails_4326, color = "red") %>%
-  addPolylines(data = DOTroads_4326)
+  #addPolylines(data = bike_trails_4326, color = "red") %>%
+  addPolylines(data = R)
 ```
 
-
->>>>>>> 03e6a6f468d7aa2c812cf8fc9dd54b98f883be44
