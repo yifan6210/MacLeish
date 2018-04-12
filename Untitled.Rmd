@@ -1,0 +1,14 @@
+---
+title: "Mini-Project 3"
+author: "Yifan Ma & Meghan Suslovic"
+date: "April 9, 2018"
+output: 
+  html_document:
+    code_folding: hide
+    df_print: paged 
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo=TRUE)
+```
