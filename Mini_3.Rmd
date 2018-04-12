@@ -21,6 +21,7 @@ library(macleish)
 library(sf)
 ```
 
+
 Biking from Smith College to MacLeish is of interest to a subset of field station visitors. Considering that some bikers appreciate climbing hills and others wish to avoid hills, propose two alternative bike routes to the field station using the available data from MassGIS. Detail the lengths of the routes and the elevation change along the routes, and support your choices with data.
 
 Supporting data includes:
@@ -99,12 +100,11 @@ R <- TIGERroads_4326 %>%
   filter(RTOWN == "CONWAY" | RTOWN == "WHATELY" | RTOWN == "WILLIAMSBURG" | RTOWN == "HATFIELD" | RTOWN == "DEERFIELD" | RTOWN == "NORTHAMPTON")
 ```
 
-<<<<<<< HEAD
-<<<<<<< HEAD 
-=======
-=======
+```{r}
 
->>>>>>> 6676b007709ba2b9d1919564f82bc8a4469c7a2d
+
+```
+
 ```{r}
 leaflet() %>%
   addTiles(group = "OpenStreetMap") %>%
@@ -114,5 +114,24 @@ leaflet() %>%
   addPolygons(data = macleish_layers[["boundary"]], weight = 2, fillOpacity = 0.01, group = "Boundaries") %>%
   #addPolylines(data = bike_trails_4326, color = "red") %>%
   addPolylines(data = R)
+```
+
+```{r}
+names(macleish_layers)
+```
+
+
+```{r}
+macleish_contour <- macleish_layers[["contours_30ft"]]
+```
+
+```{r}
+require(leaflet)
+mac_contour <- leaflet() %>%
+  addTiles() %>%
+  addPolygons(data = macleish_layers[["buildings"]], weight = 1, popup = ~name) %>%
+  addPolylines(data = macleish_layers[["contours_30ft"]], weight = 1, color = "brown") %>%
+  addPolylines(data = macleish_layers[["boundary"]], weight = 2)
+mac_contour
 ```
 
