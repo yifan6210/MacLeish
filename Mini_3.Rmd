@@ -39,13 +39,13 @@ names(macleish_layers)
 macleish_map <- leaflet() %>%
   addTiles() %>%
   addPolygons(data = macleish_layers[["buildings"]], weight = 1, popup = ~name) %>%
-  addPolylines(data = macleish_layers[["contours_3m"]], weight = 2) %>%
   addPolylines(data = macleish_layers[["trails"]], weight = 1, color = "brown") %>%
   addPolylines(data = macleish_layers[["streams"]], weight = 2) %>%
   addPolylines(data = macleish_layers[["wetlands"]], weight = 2) %>%
   addPolygons(data = macleish_layers[["research"]], weight = 1) %>%
-  addPolylines(data = macleish_layers[["boundary"]], weight = 1.5, color = "red") %>%
-  addPolygons(data = macleish_layers[["forests"]], weight = 1, color = "green") %>%
+  addPolylines(data = macleish_layers[["boundary"]], weight = 2, color = "red") %>%
+  addPolygons(data = macleish_layers[["forests"]], weight = 1, color = "green")
+  #addPolylines(data = macleish_layers[["contours_3m"]], weight = 2) %>%
 #addPolylines(data = macleish_layers[["challenge_courses"]], weight = 1) %>%
 
 macleish_map  
