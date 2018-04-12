@@ -36,21 +36,81 @@ names(macleish_layers)
 ```
 
 ```{r}
+buildings_4326 <- macleish_layers[["buildings"]] %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+trails_4326 <- macleish_layers[["trails"]] %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+streams_4326 <- macleish_layers[["streams"]] %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+wetlands_4326 <- macleish_layers[["wetlands"]] %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+research_4326 <- macleish_layers[["research"]] %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+boundary_4326 <- macleish_layers[["boundary"]] %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+cc_4326 <- macleish_layers[["challenge_courses"]] %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+forests_4326 <- macleish_layers[["forests"]] %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+boundary_4326 <- macleish_layers[["boundary"]] %>%
+  st_as_sf() %>%
+  st_transform(4326)
+
+#contour_4326 <- macleish_layers[["contours_3m"]] %>%
+  #st_as_sf() %>%
+  #st_transform(4326)
+
+
+```
+
+
+
+```{r}
 macleish_map <- leaflet() %>%
   addTiles() %>%
-  addPolygons(data = macleish_layers[["buildings"]], weight = 1, popup = ~name) %>%
-  addPolylines(data = macleish_layers[["trails"]], weight = 1, color = "brown") %>%
-  addPolylines(data = macleish_layers[["streams"]], weight = 2) %>%
-  addPolylines(data = macleish_layers[["wetlands"]], weight = 2) %>%
-  addPolygons(data = macleish_layers[["research"]], weight = 1) %>%
-  addPolylines(data = macleish_layers[["boundary"]], weight = 1.5, color = "red") %>%
-  addMarkers(data = macleish_layers[["challenge_courses"]]) %>%
-  addPolygons(data = macleish_layers[["forests"]], weight = 1, color = "green") %>%
-  addPolylines(data = macleish_layers[["boundary"]], weight = 2, color = "red") %>%
-  addPolygons(data = macleish_layers[["forests"]], weight = 1, color = "green") %>%
-  addPolylines(data = macleish_layers[["contours_3m"]], weight = 2) 
+  addPolygons(data = buildings_4326, weight = 1) %>%
+  addPolylines(data = trails_4326, weight = 1, color = "brown") %>%
+  addPolylines(data = streams_4326, weight = 2, color = "blue") %>%
+  addPolygons(data = wetlands_4326, weight = 1, color = "darkgreen") %>%
+  addPolygons(data = research_4326, weight = 1, color = "black") #%>%
+  #addPolylines(data = macleish_layers[["boundary"]], weight = 1.5, color = "red") %>%
+  #addMarkers(data = cc_4326) %>% #change marker
+  #addPolygons(data = forests_4326, weight = 1, color = "lightgreen") %>%
+  #addPolygons(data = macleish_layers[["contours_3m"]], color = "red") 
 
 macleish_map  
 
+```
+
+
+```{r}
+proj4_aea <- "+proj=aea +lat_1=29.5 +lat_2=42.5 +lat_0=37.5 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
+
+macleish_layers[["streams"]] %>%
+  st_transform(proj4_aea) %>%
+  st_buffer(dist = 10) %>%
+  st_transform(4326) 
+```
+
+```{r}
+macleish_map <- leaflet() %>%
+  addTiles() %>%
+  addPolylines(data = macleish_layers[["streams"]], weight = 2)
 ```
 
