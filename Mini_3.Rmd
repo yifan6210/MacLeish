@@ -94,10 +94,12 @@ macleish_map <- leaflet() %>%
   #addPolygons(data = forests_4326, weight = 1, color = "lightgreen") %>%
   #addPolygons(data = macleish_layers[["contours_3m"]], color = "red") 
 
+
 macleish_map  
 
 ```
 
+<<<<<<< HEAD
 
 ```{r}
 proj4_aea <- "+proj=aea +lat_1=29.5 +lat_2=42.5 +lat_0=37.5 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
@@ -112,5 +114,15 @@ macleish_layers[["streams"]] %>%
 macleish_map <- leaflet() %>%
   addTiles() %>%
   addPolylines(data = macleish_layers[["streams"]], weight = 2)
+=======
+Transform (Work in progress)
+```{r}
+macleish_layers[["research"]]
+
+st_crs(macleish_layers)
+macleish4326 <- st_transform(macleish_layers, 4326)
+
+
+>>>>>>> bcff22ea88982323b84e87f4dac65c17a1e4c364
 ```
 
