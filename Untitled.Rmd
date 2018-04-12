@@ -12,3 +12,12 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo=TRUE)
 ```
+
+```{r}
+library(tidyverse)
+library(leaflet)
+library(dplyr)
+library(etl)
+library(macleish)
+library(sf)
+```
