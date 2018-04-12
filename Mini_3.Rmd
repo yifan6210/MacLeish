@@ -77,8 +77,8 @@ scenic <- read_sf(dsn)
 scenic_4326 <- scenic %>%
   st_transform(4326)
 
-scenic_4326 <- st_as_sf(scenic_4326) %>%
-  filter(xmin > -72.589193)
+#scenic_4326 <- st_as_sf(scenic_4326) %>%
+ # filter( geometry < 72.589193)
 ```
 
 
@@ -122,12 +122,6 @@ R <- TIGERroads_4326 %>%
   filter(RTOWN == "CONWAY" | RTOWN == "WHATELY" | RTOWN == "WILLIAMSBURG" | RTOWN == "HATFIELD" | RTOWN == "DEERFIELD" | RTOWN == "NORTHAMPTON")
 ```
 
-<<<<<<< HEAD
-<<<<<<< HEAD 
-=======
-=======
-
->>>>>>> 6676b007709ba2b9d1919564f82bc8a4469c7a2d
 ```{r}
 leaflet() %>%
   addTiles(group = "OpenStreetMap") %>%
