@@ -43,7 +43,8 @@ macleish_map <- leaflet() %>%
   addPolylines(data = macleish_layers[["streams"]], weight = 2) %>%
   addPolygons(data = macleish_layers[["research"]], weight = 1) %>%
   addPolylines(data = macleish_layers[["boundary"]], weight = 1.5, color = "red") %>%
-  #addPolylines(data = macleish_layers[["challenge_courses"]], weight = 1) %>%
+  addMarkers(data = macleish_layers[["challenge_courses"]]) %>%
   addPolygons(data = macleish_layers[["forests"]], weight = 1, color = "green")
   
 ```
+
