@@ -5,6 +5,7 @@ date: "April 9, 2018"
 output: 
   html_document:
     code_folding: hide
+    df_print: paged 
 
 ---
 
@@ -60,6 +61,27 @@ bike_trails_4326 <- bike_trails %>%
 bike_trails_4326
 ```
 
+scenic 
+
+```{r}
+url <- url <- "http://download.massgis.digital.mass.gov/shapefiles/state/contours250k.zip"
+local_file <- basename(url)
+download.file(url, destfile = local_file)
+unzip(local_file, exdir = "scenic")
+local_file <- basename(url)
+download.file(url, destfile = local_file)
+unzip(local_file, exdir = "scenic")
+
+dsn <- path.expand("scenic")
+scenic <- read_sf(dsn)
+
+scenic_4326 <- scenic %>%
+  st_transform(4326)
+
+#scenic_4326 <- st_as_sf(scenic_4326) %>%
+ # filter( geometry < 72.589193)
+```
+
 
 Elevation data
 
@@ -71,6 +93,7 @@ unzip(local_file, exdir = "elevation")
 
 dsn <- path.expand("elevation")
 elevation <- read_sf(dsn)
+
 
 ```
 
@@ -100,11 +123,14 @@ R <- TIGERroads_4326 %>%
   filter(RTOWN == "CONWAY" | RTOWN == "WHATELY" | RTOWN == "WILLIAMSBURG" | RTOWN == "HATFIELD" | RTOWN == "DEERFIELD" | RTOWN == "NORTHAMPTON")
 ```
 
+<<<<<<< HEAD
 ```{r}
 
 
 ```
 
+=======
+>>>>>>> cf776c84118b161c02f5bc967142f710ef3b01a9
 ```{r}
 leaflet() %>%
   addTiles(group = "OpenStreetMap") %>%
@@ -112,11 +138,13 @@ leaflet() %>%
   #addProviderTiles("Esri.WorldImagery", group = "Satellite") %>%
   #addProviderTiles("Stamen.TonerLite", group = "Toner Lite") %>%
   addPolygons(data = macleish_layers[["boundary"]], weight = 2, fillOpacity = 0.01, group = "Boundaries") %>%
+  #addPolylines(data = scenic_4326) %>%
   #addPolylines(data = bike_trails_4326, color = "red") %>%
   addPolylines(data = R)
 ```
 
 ```{r}
+<<<<<<< HEAD
 names(macleish_layers)
 ```
 
@@ -133,5 +161,8 @@ mac_contour <- leaflet() %>%
   addPolylines(data = macleish_layers[["contours_30ft"]], weight = 1, color = "brown") %>%
   addPolylines(data = macleish_layers[["boundary"]], weight = 2)
 mac_contour
+=======
+
+>>>>>>> cf776c84118b161c02f5bc967142f710ef3b01a9
 ```
 
