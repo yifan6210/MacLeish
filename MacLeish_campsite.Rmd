@@ -1,0 +1,20 @@
+---
+title: "MacLeish_question4"
+author: "Meghan Suslovic"
+date: "4/11/2018"
+output: html_document:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo=TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(leaflet)
+library(dplyr)
+library(etl)
+library(macleish)
+library(sf)
+```
