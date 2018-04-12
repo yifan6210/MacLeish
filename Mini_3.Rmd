@@ -50,7 +50,18 @@ macleish_map <- leaflet() %>%
   addPolygons(data = macleish_layers[["forests"]], weight = 1, color = "green") %>%
   addPolylines(data = macleish_layers[["contours_3m"]], weight = 2) 
 
+
 macleish_map  
+
+```
+
+Transform (Work in progress)
+```{r}
+macleish_layers[["research"]]
+
+st_crs(macleish_layers)
+macleish4326 <- st_transform(macleish_layers, 4326)
+
 
 ```
 
