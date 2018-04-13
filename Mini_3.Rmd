@@ -91,9 +91,9 @@ boundary_4326 <- macleish_layers[["boundary"]] %>%
   st_as_sf() %>%
   st_transform(4326)
 
-#contour_4326 <- macleish_layers[["contours_3m"]] %>%
-  #st_as_sf() %>%
-  #st_transform(4326)
+contour_4326 <- macleish_layers[["contours_3m"]] %>%
+  st_as_sf() %>%
+  st_transform(4326)
 
 
 ```
@@ -108,10 +108,8 @@ macleish_map <- leaflet() %>%
   addPolylines(data = streams_4326, weight = 2, color = "blue") %>%
   addPolygons(data = wetlands_4326, weight = 1, color = "darkgreen") %>%
   addPolygons(data = research_4326, weight = 1, color = "black") %>%
-  #addPolylines(data = macleish_layers[["boundary"]], weight = 1.5, color = "red") %>%
-  #addMarkers(data = cc_4326) %>% #change marker
-  addPolygons(data = forests_4326, weight = 1, color = "lightgreen")
-  #addPolygons(data = macleish_layers[["contours_3m"]], color = "red") 
+  addPolygons(data = forests_4326, weight = 1, color = "lightgreen")%>%
+  addPolygons(data = macleish_layers[["contours_3m"]], color = "red") 
 
 
 macleish_map  
@@ -146,12 +144,23 @@ b_challenge_union <- st_union(b_challenge)
 ```
 
 ```{r}
-parking_lot <- data.frame(lon = -72.680689, lat = 42.448032) 
+parking_lot <- data.frame(lon = -72.680663, lat = 42.448013) 
   
 parking_lot_sf <- st_as_sf(parking_lot, coords = c("lon", "lat"), crs = 4326) %>%
   st_transform(proj4_aea) %>%
   st_buffer(dist = 840.672) %>%
   st_transform(4326)
+
+campsite <-  data.frame(lon = -72.678154, lat = 42.450976)
+r_campsite <- data.frame(lon = -72.679581, lat = 42.458549)
+
+campsite_sf <- st_as_sf(campsite, coords = c("lon", "lat"), crs = 4326)
+r_campsite_sf <- st_as_sf(r_campsite, coords = c("lon", "lat"), crs = 4326)
+```
+
+```{r}
+forests_pal <- colorNumeric(palette = "Greens",
+  domain = forests_4326$VegType_21)
 ```
 
 
@@ -163,9 +172,23 @@ macleish_map <- leaflet() %>%
   addPolygons(data = b_research_union, color = "red", weight = 1) %>%
   addPolygons(data = b_challenge_union, color = "yellow", weight = 1) %>%
   addPolygons(data =parking_lot_sf, color = "grey", weight = 1) %>%
-  addPolygons(data = forests_4326, weight = 1, color = "darkgreen")
+  addPolygons(data = forests_4326, weight = 1, color = ~forests_pal(VegType_21)) %>%
+  #addPolylines(data = macleish_layers[["contours_3m"]], color = "black", weight = 0.5) %>%
+  addMarkers(data = campsite_sf) %>%
+  addMarkers(data = r_campsite_sf)
 
 macleish_map
 ```
 
+
+```{r}
+macleish_map_f <- leaflet() %>%
+  addTiles() %>%
+  addPolygons(data = forests_4326, weight = 1, fillOpacity = 1, color = ~forests_pal(VegType_21)) %>%
+  addMarkers(data = campsite_sf) %>%
+  addMarkers(data = r_campsite_sf) %>%
+  addLegend(values = ~forests_4326, title = "Forest Type", opacity = 1)
+
+macleish_map_f
+```
 
