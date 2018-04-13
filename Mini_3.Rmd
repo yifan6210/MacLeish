@@ -72,9 +72,9 @@ boundary_4326 <- macleish_layers[["boundary"]] %>%
   st_as_sf() %>%
   st_transform(4326)
 
-#contour_4326 <- macleish_layers[["contours_3m"]] %>%
-  #st_as_sf() %>%
-  #st_transform(4326)
+contour_4326 <- macleish_layers[["contours_3m"]] %>%
+  st_as_sf() %>%
+  st_transform(4326)
 
 
 ```
@@ -90,9 +90,8 @@ macleish_map <- leaflet() %>%
   addPolygons(data = wetlands_4326, weight = 1, color = "darkgreen") %>%
   addPolygons(data = research_4326, weight = 1, color = "black") %>%
   #addPolylines(data = macleish_layers[["boundary"]], weight = 1.5, color = "red") %>%
-  #addMarkers(data = cc_4326) %>% #change marker
   addPolygons(data = forests_4326, weight = 1, color = "lightgreen")
-  #addPolygons(data = macleish_layers[["contours_3m"]], color = "red") 
+  addPolygons(data = macleish_layers[["contours_3m"]], color = "red") 
 
 
 macleish_map  
