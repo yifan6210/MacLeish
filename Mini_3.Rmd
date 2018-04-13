@@ -159,8 +159,8 @@ r_campsite_sf <- st_as_sf(r_campsite, coords = c("lon", "lat"), crs = 4326)
 ```
 
 ```{r}
-forests_pal <- colorNumeric(palette = "Greens",
-  domain = forests_4326$VegType_21)
+forests_pal <- colorFactor(palette = "Greens",
+  domain = forests_4326$Sheet1__Na)
 ```
 
 
@@ -184,10 +184,10 @@ macleish_map
 ```{r}
 macleish_map_f <- leaflet(data = forests_4326) %>%
   addTiles() %>%
-  addPolygons(weight = 1, fillOpacity = 1, color = ~forests_pal(VegType_21)) %>%
+  addPolygons(weight = 1, fillOpacity = 1, color = ~forests_pal(Sheet1__Na)) %>%
   addMarkers(data = campsite_sf) %>%
   addMarkers(data = r_campsite_sf) %>%
-  addLegend(pal = forests_pal, values = ~VegType_21, title = "Forest Type", opacity = 1)
+  addLegend(pal = forests_pal, values = ~Sheet1__Na, title = "Forest Type", opacity = 1)
 
 macleish_map_f
 ```
