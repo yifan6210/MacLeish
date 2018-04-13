@@ -19,6 +19,10 @@ Supporting data includes:
 -Challenge course element locations shapefile
 -Property Boundary shapefile
 
+Old field forest== multiflora rose or bittersweet very hard to clear
+lean to=$3,000, hard to deliver supplies for construction
+more like two tent platforms and picnic table
+
 **Title:**
 In tents Camping! 
 Where to construct a third campsite at MacLeish Field Station
@@ -27,7 +31,8 @@ Problem Statement:
 Smith College's MacLeish Field Station is looking to create a third campsite for students and visters to utlize. The client, Field Station Manager Reid Bertone-Johnson, stipulated a number of specfic requriements which include:
 -location within 1/2 mile from the parking lot
 -no further than 200 ft from a water source
--not in a 
+-not in the same type of forest as the other two campsites
+
 Our task was to analyze spatial data and factor in the client's criterea recomend a location for  
 
 
