@@ -177,12 +177,12 @@ macleish_map
 
 
 ```{r}
-macleish_map_f <- leaflet() %>%
+macleish_map_f <- leaflet(data = forests_4326) %>%
   addTiles() %>%
-  addPolygons(data = forests_4326, weight = 1, fillOpacity = 1, color = ~forests_pal(VegType_21)) %>%
+  addPolygons(weight = 1, fillOpacity = 1, color = ~forests_pal(VegType_21)) %>%
   addMarkers(data = campsite_sf) %>%
   addMarkers(data = r_campsite_sf) %>%
-  addLegend(values = ~forests_4326, title = "Forest Type", opacity = 1)
+  addLegend(pal = forests_pal, values = ~VegType_21, title = "Forest Type", opacity = 1)
 
 macleish_map_f
 ```
