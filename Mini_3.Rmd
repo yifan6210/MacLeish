@@ -111,7 +111,7 @@ b_streams <- streams_4326 %>%
 ```{r}
 macleish_map <- leaflet() %>%
   addTiles() %>%
-  addPolylines(data = b_streams)
+  addPolygons(data = b_streams)
 
 macleish_map
 ```
