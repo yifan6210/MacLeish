@@ -140,10 +140,10 @@ parking_lot_sf <- st_as_sf(parking_lot, coords = c("lon", "lat"), crs = 4326) %>
 ```{r}
 macleish_map <- leaflet() %>%
   addTiles() %>%
-  addPolygons(data = b_streams) %>%
-  addPolygons(data = b_research_union, color = "red") %>%
-  addPolygons(data = b_challenge_union, color = "yellow") %>%
-  addPolygons(data =parking_lot_sf, color = "grey") %>%
+  addPolygons(data = b_streams, weight = 1) %>%
+  addPolygons(data = b_research_union, color = "red", weight = 1) %>%
+  addPolygons(data = b_challenge_union, color = "yellow", weight = 1) %>%
+  addPolygons(data =parking_lot_sf, color = "grey", weight = 1) %>%
   addPolygons(data = forests_4326, weight = 1, color = "darkgreen")
 
 macleish_map
