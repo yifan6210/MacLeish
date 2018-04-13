@@ -102,10 +102,10 @@ macleish_map <- leaflet() %>%
   addPolylines(data = trails_4326, weight = 1, color = "brown") %>%
   addPolylines(data = streams_4326, weight = 2, color = "blue") %>%
   addPolygons(data = wetlands_4326, weight = 1, color = "darkgreen") %>%
-  addPolygons(data = research_4326, weight = 1, color = "black") #%>%
+  addPolygons(data = research_4326, weight = 1, color = "black") %>%
   #addPolylines(data = macleish_layers[["boundary"]], weight = 1.5, color = "red") %>%
   #addMarkers(data = cc_4326) %>% #change marker
-  #addPolygons(data = forests_4326, weight = 1, color = "lightgreen") %>%
+  addPolygons(data = forests_4326, weight = 1, color = "lightgreen")
   #addPolygons(data = macleish_layers[["contours_3m"]], color = "red") 
 
 
@@ -113,30 +113,54 @@ macleish_map
 
 ```
 
-<<<<<<< HEAD
-
 ```{r}
 proj4_aea <- "+proj=aea +lat_1=29.5 +lat_2=42.5 +lat_0=37.5 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
 
-macleish_layers[["streams"]] %>%
+b_streams <- streams_4326 %>%
   st_transform(proj4_aea) %>%
-  st_buffer(dist = 10) %>%
+  st_buffer(dist = 60.96) %>%
   st_transform(4326) 
 ```
 
 ```{r}
+b_research <- research_4326 %>%
+  st_transform(proj4_aea) %>%
+  st_buffer(dist = 152.4) %>%
+  st_transform(4326)
+
+b_research_union <- st_union(b_research)
+```
+
+```{r}
+b_challenge <- cc_4326 %>%
+  st_transform(proj4_aea) %>%
+  st_buffer(dist = 152.4) %>%
+  st_transform(4326)
+
+b_challenge_union <- st_union(b_challenge)
+```
+
+```{r}
+parking_lot <- data.frame(lon = -72.680689, lat = 42.448032) 
+  
+parking_lot_sf <- st_as_sf(parking_lot, coords = c("lon", "lat"), crs = 4326) %>%
+  st_transform(proj4_aea) %>%
+  st_buffer(dist = 840.672) %>%
+  st_transform(4326)
+```
+
+
+
+```{r}
 macleish_map <- leaflet() %>%
   addTiles() %>%
-  addPolylines(data = macleish_layers[["streams"]], weight = 2)
-=======
-Transform (Work in progress)
-```{r}
-macleish_layers[["research"]]
+  addPolygons(data = b_streams, weight = 1) %>%
+  addPolygons(data = b_research_union, color = "red", weight = 1) %>%
+  addPolygons(data = b_challenge_union, color = "yellow", weight = 1) %>%
+  addPolygons(data =parking_lot_sf, color = "grey", weight = 1) %>%
+  addPolygons(data = forests_4326, weight = 1, color = "darkgreen")
 
-st_crs(macleish_layers)
-macleish4326 <- st_transform(macleish_layers, 4326)
-
-
->>>>>>> bcff22ea88982323b84e87f4dac65c17a1e4c364
+macleish_map
 ```
+
 
