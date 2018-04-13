@@ -109,9 +109,26 @@ b_streams <- streams_4326 %>%
 ```
 
 ```{r}
+b_research <- research_4326 %>%
+  st_transform(proj4_aea) %>%
+  st_buffer(dist = 152.4) %>%
+  st_transform(4326)
+```
+
+```{r}
+b_challenge <- cc_4326 %>%
+  st_transform(proj4_aea) %>%
+  st_buffer(dist = 152.4) %>%
+  st_transform(4326)
+```
+
+
+```{r}
 macleish_map <- leaflet() %>%
   addTiles() %>%
-  addPolygons(data = b_streams)
+  addPolygons(data = b_streams) %>%
+  addPolygons(data = b_research, color = "red") %>%
+  addPolygons(data = b_challenge, color = "yellow")
 
 macleish_map
 ```
