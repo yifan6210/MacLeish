@@ -8,6 +8,7 @@ output:
     df_print: paged 
 
 ---
+
 MacLeish currently has two campsites - one large group site closer to the building and one remote campsite with two tent platforms about one mile from the parking area. We would like to develop one additional campsite that is approximately half a mile walk from the parking area, within 200’ of a stream or other source of water, in forest that is unlike the forest in the two other campsites, relatively flat, and at least 500’ from any research area or any element of the Challenge Course. Propose two new campsite locations for our consideration.
 Supporting data includes:
 -Existing trails shapefile
@@ -17,6 +18,19 @@ Supporting data includes:
 -Research locations shapefile
 -Challenge course element locations shapefile
 -Property Boundary shapefile
+
+**Title:**
+In tents Camping! 
+Where to construct a third campsite at MacLeish Field Station
+
+Problem Statement:
+Smith College's MacLeish Field Station is looking to create a third campsite for students and visters to utlize. The client, Field Station Manager Reid Bertone-Johnson, stipulated a number of specfic requriements which include:
+-location within 1/2 mile from the parking lot
+-no further than 200 ft from a water source
+-not in a 
+Our task was to analyze spatial data and factor in the client's criterea recomend a location for  
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo=TRUE)
