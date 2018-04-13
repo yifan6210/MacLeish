@@ -88,10 +88,10 @@ macleish_map <- leaflet() %>%
   addPolylines(data = trails_4326, weight = 1, color = "brown") %>%
   addPolylines(data = streams_4326, weight = 2, color = "blue") %>%
   addPolygons(data = wetlands_4326, weight = 1, color = "darkgreen") %>%
-  addPolygons(data = research_4326, weight = 1, color = "black") #%>%
+  addPolygons(data = research_4326, weight = 1, color = "black") %>%
   #addPolylines(data = macleish_layers[["boundary"]], weight = 1.5, color = "red") %>%
   #addMarkers(data = cc_4326) %>% #change marker
-  #addPolygons(data = forests_4326, weight = 1, color = "lightgreen") %>%
+  addPolygons(data = forests_4326, weight = 1, color = "lightgreen")
   #addPolygons(data = macleish_layers[["contours_3m"]], color = "red") 
 
 
@@ -143,7 +143,8 @@ macleish_map <- leaflet() %>%
   addPolygons(data = b_streams) %>%
   addPolygons(data = b_research_union, color = "red") %>%
   addPolygons(data = b_challenge_union, color = "yellow") %>%
-  addPolygons(data =parking_lot_sf, color = "grey")
+  addPolygons(data =parking_lot_sf, color = "grey") %>%
+  addPolygons(data = forests_4326, weight = 1, color = "darkgreen")
 
 macleish_map
 ```
