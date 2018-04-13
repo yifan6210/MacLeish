@@ -123,8 +123,12 @@ b_challenge <- cc_4326 %>%
 ```
 
 ```{r}
-parking_lot <- data.frame(lat = 42.448032, lon = -72.680689) %>%
-  #st_buffer(dist = 840.672) centroid?
+parking_lot <- data.frame(lon = -72.680689, lat = 42.448032) 
+  
+parking_lot_sf <- st_as_sf(parking_lot, coords = c("lon", "lat"), crs = 4326) %>%
+  st_transform(proj4_aea) %>%
+  st_buffer(dist = 840.672) %>%
+  st_transform(4326)
 ```
 
 
@@ -135,7 +139,7 @@ macleish_map <- leaflet() %>%
   addPolygons(data = b_streams) %>%
   addPolygons(data = b_research, color = "red") %>%
   addPolygons(data = b_challenge, color = "yellow") %>%
-  addMarkers(lng = ~lon, lat = ~lat, data = parking_lot)
+  addPolygons(data =parking_lot_sf, color = "grey")
 
 macleish_map
 ```
