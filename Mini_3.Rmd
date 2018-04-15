@@ -163,7 +163,7 @@ forests_pal <- colorFactor(palette = "Greens",
 
 ```{r}
 macleish_map <- leaflet() %>%
-  addTiles() %>%
+  addProviderTiles(providers$CartoDB.Positron)%>%
   addPolygons(data = b_streams, weight = 1) %>%
   addPolygons(data = b_research_union, color = "red", weight = 1) %>%
   addPolygons(data = b_challenge_union, color = "yellow", weight = 1) %>%
@@ -179,26 +179,25 @@ macleish_map
 
 ```{r}
 macleish_map_2 <- leaflet() %>%
-  addTiles() %>%
   addProviderTiles(providers$CartoDB.Positron)%>%
   addPolygons(data = b_streams, weight = 1, color = "blue") %>%
-  addPolygons(data = b_research_union, color = "red", weight = 1) %>%
-  addPolygons(data = b_challenge_union, color = "red", weight = 1) %>%
   addPolygons(data =parking_lot_sf, color = "blue", weight = 1) %>%
   addPolygons(data = forests_4326, weight = 1, color = "blue") %>%
   addPolylines(data = macleish_layers[["contours_3m"]], color = "blue", weight = 0.5) %>%
   addMarkers(data = campsite_sf) %>%
-  addMarkers(data = r_campsite_sf)
+  addMarkers(data = r_campsite_sf) %>%
+  addPolygons(data = b_research_union, color = "red", weight = 1) %>%
+  addPolygons(data = b_challenge_union, color = "red", weight = 1) 
 
 macleish_map_2
 ```
 
 ```{r}
 macleish_map_f <- leaflet(data = forests_4326) %>%
-  addTiles() %>%
+  addProviderTiles(providers$OpenTopoMap)%>%
   addPolygons(weight = 1, fillOpacity = 1, color = ~forests_pal(Sheet1__Na)) %>%
-  addMarkers(data = campsite_sf) %>%
-  addMarkers(data = r_campsite_sf) %>%
+  addMarkers(data = campsite_sf, popup = "Group Campsite") %>%
+  addMarkers(data = r_campsite_sf, popup = "Remote Campite" ) %>%
   addLegend("bottomright",pal = forests_pal, values = ~Sheet1__Na, title = "Forest Type", opacity = 1)
 
 macleish_map_f
