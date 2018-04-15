@@ -152,6 +152,13 @@ r_campsite <- data.frame(lon = -72.679581, lat = 42.458549)
 
 campsite_sf <- st_as_sf(campsite, coords = c("lon", "lat"), crs = 4326)
 r_campsite_sf <- st_as_sf(r_campsite, coords = c("lon", "lat"), crs = 4326)
+
+n_campsite <- data.frame(lon = -72.673847, lat = 42.449276)
+#n_campsite2 <- data.frame(lon = -72.678154, lat = 42.450976)
+
+n_campsite_sf <- st_as_sf(n_campsite, coords = c("lon", "lat"), crs = 4326)
+#n_campsite2_sf <- st_as_sf(n_campsite2, coords = c("lon", "lat"), crs = 4326)
+
 ```
 
 ```{r}
@@ -170,7 +177,7 @@ macleish_map <- leaflet() %>%
   addPolygons(data =parking_lot_sf, color = "grey", weight = 1) %>%
   addPolygons(data = forests_4326, weight = 1, color = "darkgreen") %>%
   addMarkers(data = campsite_sf, popup = "Group Campsite") %>%
-  addMarkers(data = r_campsite_sf, popup = "Remote Campite")
+  addMarkers(data = r_campsite_sf, popup = "Remote Campsite")
 
 macleish_map
 
@@ -181,11 +188,11 @@ macleish_map
 macleish_map_2 <- leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron)%>%
   addPolygons(data = b_streams, weight = 1, color = "blue") %>%
-  addPolygons(data =parking_lot_sf, color = "blue", weight = 1) %>%
   addPolygons(data = forests_4326, weight = 1, color = "blue") %>%
   addPolylines(data = macleish_layers[["contours_3m"]], color = "blue", weight = 0.5) %>%
   addMarkers(data = campsite_sf, popup = "Group Campsite") %>%
-  addMarkers(data = r_campsite_sf, popup = "Remote Campite") %>%
+  addMarkers(data = r_campsite_sf, popup = "Remote Campsite") %>%
+  addMarkers(data = n_campsite_sf, popup = "New Campsite 1" ) %>%
   addPolygons(data = b_research_union, color = "red", weight = 1) %>%
   addPolygons(data = b_challenge_union, color = "red", weight = 1) 
 
@@ -197,8 +204,9 @@ macleish_map_f <- leaflet(data = forests_4326) %>%
   addProviderTiles(providers$OpenTopoMap)%>%
   addPolygons(weight = 1, fillOpacity = 1, color = ~forests_pal(Sheet1__Na)) %>%
   addMarkers(data = campsite_sf, popup = "Group Campsite") %>%
-  addMarkers(data = r_campsite_sf, popup = "Remote Campite" ) %>%
-  addLegend("bottomright",pal = forests_pal, values = ~Sheet1__Na, title = "Forest Type", opacity = 1)
+  addMarkers(data = r_campsite_sf, popup = "Remote Campsite" ) %>%
+  addMarkers(data = n_campsite_sf, popup = "New Campsite 1" ) %>%
+  addLegend("bottomright",pal = forests_pal, values = ~Sheet1__Na, title = "Forest Type", opacity = 1  )
 
 macleish_map_f
 ```
