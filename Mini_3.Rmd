@@ -169,8 +169,8 @@ macleish_map <- leaflet() %>%
   addPolygons(data = b_challenge_union, color = "yellow", weight = 1) %>%
   addPolygons(data =parking_lot_sf, color = "grey", weight = 1) %>%
   addPolygons(data = forests_4326, weight = 1, color = "darkgreen") %>%
-  addMarkers(data = campsite_sf) %>%
-  addMarkers(data = r_campsite_sf)
+  addMarkers(data = campsite_sf, popup = "Group Campsite") %>%
+  addMarkers(data = r_campsite_sf, popup = "Remote Campite")
 
 macleish_map
 
@@ -184,8 +184,8 @@ macleish_map_2 <- leaflet() %>%
   addPolygons(data =parking_lot_sf, color = "blue", weight = 1) %>%
   addPolygons(data = forests_4326, weight = 1, color = "blue") %>%
   addPolylines(data = macleish_layers[["contours_3m"]], color = "blue", weight = 0.5) %>%
-  addMarkers(data = campsite_sf) %>%
-  addMarkers(data = r_campsite_sf) %>%
+  addMarkers(data = campsite_sf, popup = "Group Campsite") %>%
+  addMarkers(data = r_campsite_sf, popup = "Remote Campite") %>%
   addPolygons(data = b_research_union, color = "red", weight = 1) %>%
   addPolygons(data = b_challenge_union, color = "red", weight = 1) 
 
