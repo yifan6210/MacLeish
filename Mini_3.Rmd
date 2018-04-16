@@ -188,8 +188,8 @@ macleish_map_2 <- leaflet() %>%
   addPolygons(data = b_streams, weight = 1, color = "blue") %>%
   addPolygons(data = forests_4326, weight = 1, color = "blue") %>%
   addPolylines(data = macleish_layers[["contours_3m"]], color = "blue", weight = 0.5) %>%
-  addMarkers(data = campsite_sf, popup = "Group Campsite") %>%
-  addMarkers(data = r_campsite_sf, popup = "Remote Campsite") %>%
+  addCircleMarkers(data = campsite_sf, color = "black", popup = "Group Campsite") %>%
+  addCircleMarkers(data = r_campsite_sf, color = "black", popup = "Remote Campsite") %>%
   addMarkers(data = n_campsite_sf, popup = "New Campsite 1" ) %>%
   addMarkers(data = n_campsite2_sf, popup = "New Campsite 2" ) %>%
   addPolygons(data = b_research_union, color = "red", weight = 1) %>%
@@ -209,8 +209,8 @@ After careful consideration of Figure 2, we thought a campsite along Jimmy Nolan
 macleish_map_f <- leaflet(data = forests_4326) %>%
   addProviderTiles(providers$OpenTopoMap)%>%
   addPolygons(weight = 1, fillOpacity = 1, color = ~forests_pal(Sheet1__Na)) %>%
-  addMarkers(data = campsite_sf, popup = "Group Campsite") %>%
-  addMarkers(data = r_campsite_sf, popup = "Remote Campsite" ) %>%
+  addCircleMarkers(data = campsite_sf, color = "black", popup = "Group Campsite") %>%
+  addCircleMarkers(data = r_campsite_sf, color = "black", popup = "Remote Campsite" ) %>%
   addMarkers(data = n_campsite_sf, popup = "New Campsite 1" ) %>%
   addMarkers(data = n_campsite2_sf, popup = "New Campsite 2" ) %>%
   addLegend("bottomright",pal = forests_pal, values = ~Sheet1__Na, title = "Forest Type", opacity = 1  )
