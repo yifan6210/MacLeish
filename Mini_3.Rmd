@@ -204,3 +204,4 @@ macleish_map_f <- leaflet(data = forests_4326) %>%
 macleish_map_f
 ```
 
+
