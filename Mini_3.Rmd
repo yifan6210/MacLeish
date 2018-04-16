@@ -209,8 +209,12 @@ macleish_map_f <- leaflet(data = forests_4326) %>%
 macleish_map_f
 ```
 
+
 Our second proposed location is just a little south of our first recommendation. It is also located on the banks of Jimmy Nolan Brook but in a Black Birch-Sugar Maple forest. This campsite will be accessible through the abandoned pasture that dominates the central portion of MacLeish. The proposed campsite’s proximity to open pasture will make it easier to transport building supplies to the site and doesn’t depend on the construction of a new trail. The location within a Black Birch-Sugar Maple forest will provide protection from the elements, but being close to the pasture will allow for activities like stargazing.
 
 After speaking with Bertone-Johnson, we found that the third campsite will most likely include two tent platforms and a picnic table. The lean-to at the remote campsite cost $3,000 to build and the budget is lower for this new campsite. Tent platforms generally cost only a few hundred dollars and it is less labor intensive to transport the materials to the site. A picnic table will cost a few hundred dollars, including labor, to build. 
 
 Both of our proposed locations should be carefully scouted before any construction begins to confirm that tent platforms and a picnic table would fit with minimal disturbance to the site and surrounding environment. For example, the two recommended sites are located within 200’ of Jimmy Nolan Brook for convenient access to water but building right on the stream bank should be avoided to reduce the risk of erosion. 
+
+**Footnotes:**
+GitHub- https://github.com/yifan6210/MacLeish
