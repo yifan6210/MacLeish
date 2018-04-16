@@ -9,33 +9,23 @@ output:
 
 ---
 
-MacLeish currently has two campsites - one large group site closer to the building and one remote campsite with two tent platforms about one mile from the parking area. We would like to develop one additional campsite that is approximately half a mile walk from the parking area, within 200’ of a stream or other source of water, in forest that is unlike the forest in the two other campsites, relatively flat, and at least 500’ from any research area or any element of the Challenge Course. Propose two new campsite locations for our consideration.
-Supporting data includes:
--Existing trails shapefile
--10’ contour elevation data
--vegetation type shapefile
--hydrology (streams, wetlands, etc.) shapefile
--Research locations shapefile
--Challenge course element locations shapefile
--Property Boundary shapefile
+#In-tents Camping at MacLeish!#
+###Where to construct a third campsite at MacLeish Field Station in Whately, MA###
 
-Old field forest== multiflora rose or bittersweet very hard to clear
-lean to=$3,000, hard to deliver supplies for construction
-more like two tent platforms and picnic table
 
-**Title:**
-In tents Camping at MacLeish! 
-Where to construct a third campsite at MacLeish Field Station in Whately, MA
+Smith College's MacLeish Field Station is looking to create a third campsite for students and visitors to utilize. The client, Field Station Manager Reid Bertone-Johnson, stipulated a number of specific requirements for the new campsite which include:
 
-Smith College's MacLeish Field Station is looking to create a third campsite for students and visitors to utilize. The client, Field Station Manager Reid Bertone-Johnson, stipulated a number of specific requirements  for the new campsite which include:
 -within 1/2 mile from the parking lot
--no further than 200 ft from a water source
--at least 500 ft from any research area or Challenge Course element
--not in the same type of forest as the other two campsites (i.e. not______)
--relatively flat
-Our task was to analyze spatial data and factor in the client's above criteria in order to come up with two recommendations for a third campsite location. All of the data we used comes from the MacLeish package and specifically the macleish_layers data object. By constructing buffers around the parking lot, streams, research areas, and challenge course elements, we determined that the new campsite would have to be in the southern half of the Field Station. 
-  
 
+-no further than 200 ft from a water source
+
+-at least 500 ft from any research area or Challenge Course element
+
+-not in the same type of forest as the other two campsites (i.e. not Hemlock or Sugar Maple Forest)
+
+-relatively flat
+
+Our task was to analyze spatial data and factor in the client's above criteria in order to come up with two recommendations for a third campsite location. All of the data we used comes from the MacLeish package and specifically the macleish_layers data object. By constructing buffers around the parking lot, streams, research areas, and challenge course elements, we determined that the new campsite would have to be in the southern half of the Field Station (the Challenge Course and research areas eliminated most of the northern half). Once we focused our efforts on the southern portion of MacLeish, close proximity to a stream and the elevation data (measured in 3m contour intervals) further narrowed our options and ultimately lead to our two proposed locations. Figure 1 contains all the limiting buffers and the locations of the two existing campsites.  
 
 
 ```{r setup, include=FALSE}
@@ -167,7 +157,7 @@ forests_pal <- colorFactor(palette = "Greens",
   domain = forests_4326$Sheet1__Na)
 ```
 
-### Color Coded Macleish Base Map
+### Figure 1: Color Coded Macleish Base Map
 ```{r}
 macleish_map <- leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron)%>%
@@ -191,7 +181,7 @@ macleish_map
 
 
 
-### Possible Candidate Area
+### Figure 2: Possible Candidate Area
 ```{r}
 macleish_map_2 <- leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron)%>%
@@ -211,10 +201,10 @@ macleish_map_2
 ######Red: Areas to avoid
 ######Blue: Areas open to consideration ( The darker shade of blue, the more likely the requirements for the new campsites are met)
 
+After careful consideration of Figure 2, we thought a campsite along Jimmy Nolan Brook on the eastern border would provide nice contrast with the existing campsites in terms of physical location and habitat. A new trail is being built that leads to this same stream, so human disturbance will be minimized if campers trying to access the campsite have a trail they can walk along (it will also make it easier to transport building supplies to the site if there is already a cleared trail). Having the trail cleared will also reduce the problem of multiflora rose and bittersweet, both invasive species that are hard to control. Even though our proposed site will require a small footbridge to cross to the east side of the stream, we think this is a worthwhile tradeoff because it places the campsite in a Hemlock-Northern Hardwoods forest rather than a Vernal Pool/Sedge Meadow (see Figure 3). Vernal pools are sensitive ecological areas that periodically have standing water, making them a less than ideal place to camp. This site meets all the criteria of being close to the parking lot, within 200’ of a stream, relatively flat, located within a different habitat, and far away from any research areas or Challenge Course elements. It has the additional benefit of being located next to a future trail, which will make building the campsite and accessing it much easier and less destructive to the environment.
 
 
-
-### Forest Type and Candidate Area
+### Figure 3: Forest Type and Candidate Area
 ```{r}
 macleish_map_f <- leaflet(data = forests_4326) %>%
   addProviderTiles(providers$OpenTopoMap)%>%
@@ -228,3 +218,12 @@ macleish_map_f <- leaflet(data = forests_4326) %>%
 macleish_map_f
 ```
 
+
+Our second proposed location is just a little south of our first recommendation. It is also located on the banks of Jimmy Nolan Brook but in a Black Birch-Sugar Maple forest. This campsite will be accessible through the abandoned pasture that dominates the central portion of MacLeish. The proposed campsite’s proximity to open pasture will make it easier to transport building supplies to the site and doesn’t depend on the construction of a new trail. The location within a Black Birch-Sugar Maple forest will provide protection from the elements, but being close to the pasture will allow for activities like stargazing.
+
+After speaking with Bertone-Johnson, we found that the third campsite will most likely include two tent platforms and a picnic table. The lean-to at the remote campsite cost $3,000 to build and the budget is lower for this new campsite. Tent platforms generally cost only a few hundred dollars and it is less labor intensive to transport the materials to the site. A picnic table will cost a few hundred dollars, including labor, to build. 
+
+Both of our proposed locations should be carefully scouted before any construction begins to confirm that tent platforms and a picnic table would fit with minimal disturbance to the site and surrounding environment. For example, the two recommended sites are located within 200’ of Jimmy Nolan Brook for convenient access to water but building right on the stream bank should be avoided to reduce the risk of erosion. 
+
+**Footnotes:**
+GitHub- https://github.com/yifan6210/MacLeish
