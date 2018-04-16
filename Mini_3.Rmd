@@ -9,13 +9,20 @@ output:
 
 ---
 
-**In-tents Camping at MacLeish! Where to construct a third campsite at MacLeish Field Station in Whately, MA**
+#In-tents Camping at MacLeish!#
+###Where to construct a third campsite at MacLeish Field Station in Whately, MA###
+
 
 Smith College's MacLeish Field Station is looking to create a third campsite for students and visitors to utilize. The client, Field Station Manager Reid Bertone-Johnson, stipulated a number of specific requirements for the new campsite which include:
+
 -within 1/2 mile from the parking lot
+
 -no further than 200 ft from a water source
+
 -at least 500 ft from any research area or Challenge Course element
+
 -not in the same type of forest as the other two campsites (i.e. not Hemlock or Sugar Maple Forest)
+
 -relatively flat
 
 Our task was to analyze spatial data and factor in the client's above criteria in order to come up with two recommendations for a third campsite location. All of the data we used comes from the MacLeish package and specifically the macleish_layers data object. By constructing buffers around the parking lot, streams, research areas, and challenge course elements, we determined that the new campsite would have to be in the southern half of the Field Station (the Challenge Course and research areas eliminated most of the northern half). Once we focused our efforts on the southern portion of MacLeish, close proximity to a stream and the elevation data (measured in 3m contour intervals) further narrowed our options and ultimately lead to our two proposed locations. Figure 1 contains all the limiting buffers and the locations of the two existing campsites.  
