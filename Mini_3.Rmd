@@ -188,12 +188,12 @@ macleish_map_2 <- leaflet() %>%
   addPolygons(data = b_streams, weight = 1, color = "blue") %>%
   addPolygons(data = forests_4326, weight = 1, color = "blue") %>%
   addPolylines(data = macleish_layers[["contours_3m"]], color = "blue", weight = 0.5) %>%
-  addCircleMarkers(data = campsite_sf, color = "black", popup = "Group Campsite") %>%
-  addCircleMarkers(data = r_campsite_sf, color = "black", popup = "Remote Campsite") %>%
   addMarkers(data = n_campsite_sf, popup = "New Campsite 1" ) %>%
   addMarkers(data = n_campsite2_sf, popup = "New Campsite 2" ) %>%
   addPolygons(data = b_research_union, color = "red", weight = 1) %>%
-  addPolygons(data = b_challenge_union, color = "red", weight = 1) 
+  addPolygons(data = b_challenge_union, color = "red", weight = 1)%>%
+ addCircleMarkers(data = campsite_sf, color = "black", popup = "Group Campsite") %>%
+  addCircleMarkers(data = r_campsite_sf, color = "black", popup = "Remote Campsite") 
 
 macleish_map_2
 ```
